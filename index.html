@@ -23,7 +23,37 @@
 
     <!-- Game Area -->
     <div class="game-area">
-
+        <div class="controls-area">
+            <!-- btn = bootstrap to style button? -->
+            <button class="btn btn--big btn--green">
+                <!-- fas is the Font Awesome base class -->
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="btn btn--big btn--blue">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="btn btn--big btn--orange">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="btn btn--big btn--red">
+                <i class="fas fa-divide"></i>
+            </button>
+        </div>
+        <!-- Question Area -->
+        <div class="question-area">
+            <!-- Our first number, our first operand -->
+            <span id="operand1">0</span>
+            <!-- Our sign or operator-->
+            <span id="operator">x</span>
+            <span id="operand2">0</span>
+            <!-- Last one doesn't need an ID since we're not going to reference that in JS -->
+            <span>=</span>
+            <!-- Will only be visible with mobile, styled with CSS -->
+            <p class="answer-message">Enter Answer:</p>
+            <!-- Where answers are typed in -->
+            <input id="answer-box" type="number">
+        </div>
+        <button class="btn btn-gray">Submit Answer:</button>
     </div>
 
     <!-- Score Area, adding is in span to seperate -->
