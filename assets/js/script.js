@@ -9,9 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
 //Event Listener waits for the button to be clicked and the code inside will be runned
         button.addEventListener("click", function() {
 //If statement to check the data type to see value. 
-//And  if it's submit button we're adding an Alert saying "You clicked submit"
         if (this.getAttribute("data-type") === "submit") {
-            alert("You clicked Submit!");
+            checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -42,13 +41,45 @@ function runGame(gameType) {
 }
 
     //After writing the above about addition, go down to displayAdditionQuestion
-
+//We need to check the users anser and the correct answer
+/** Checks the answer against the first element in the returned
+ * calculateCorrectAnswer array
+*/
 function checkAnswer() {
-
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    //This returns an array
+    let calculatedAnswer = calculateCorrectAnswer();
+    //Calculate answer
+    let isCorrect = userAnswer === calculatedAnswer[0];
+    //If answer is correct
+    if (isCorrect) {
+        alert("Hey! You got it right! :)")
+    //If answer is wrong
+    } else {
+        alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+    }
+    runGame(calculatedAnswer[1]);
 }
-
+/**
+ * Gets the operands and the operator directly from the DOM
+ * and returns the correct answer
+ */
 function calculateCorrectAnswer() {
-
+    /**
+     * The first part is just getting the values back from the dom. 
+     * We use the parse int function to treat the value as an integer, a whole number since JS by default returns it as a string. 
+     * We calculate the correct answer based on game type = operator.
+     */
+    let operand1 = parseInt(document.getElementById('operand1').innerText);
+    let operand2 = parseInt(document.getElementById('operand2').innerText);
+    let operator = document.getElementById("operator").innerText;
+//If the operator is equal to a plus sign, it must be the addition game
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"]; 
+    } else {
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`;
+    }
 }
 
 function incrementScore() {
