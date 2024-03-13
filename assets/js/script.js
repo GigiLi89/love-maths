@@ -58,7 +58,7 @@ function runGame(gameType) {
             displayMultiplyQuestion(num1, num2);  
             //Adding division
         } else if (gameType === "division") {
-            displayMultiplyQuestion(num1, num2);  
+            displayDivisionQuestion(num1, num2);  
 
 //Error msg if it doesn't work
     } else {
@@ -156,7 +156,8 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 function displayDivisionQuestion(operand1, operand2) {
-    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
-    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
+    operand1 = operand1 * operand2;
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
     document.getElementById('operator').textContent = "/";
 }
