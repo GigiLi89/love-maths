@@ -54,9 +54,11 @@ function checkAnswer() {
     //If answer is correct
     if (isCorrect) {
         alert("Hey! You got it right! :)")
+        incrementScore();
     //If answer is wrong
     } else {
         alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
     runGame(calculatedAnswer[1]);
 }
@@ -81,13 +83,20 @@ function calculateCorrectAnswer() {
         throw `Unimplemented operator ${operator}. Aborting!`;
     }
 }
-
+/**
+ * Gets the current score from the DOM and inrements it by 1
+ * After the increments are written, go back to checkAnswer to call the functions
+ */
 function incrementScore() {
-
+let oldScore = parseInt(document.getElementById("score").innerText);
+//after that we can write it back to the dom.
+document.getElementById("score").innerText = ++oldScore; 
+//important to put the ++ before the variable
 }
 
 function incrementWrongAnswer() {
-
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore; 
 }
 
 function displayAdditionQuestion(operand1, operand2) {
